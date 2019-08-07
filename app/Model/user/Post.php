@@ -3,13 +3,14 @@
 namespace App\Model\user;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Post extends Model
 {
 	protected $fillable = ['title','subtitle','slug','body', 'status','image', 'like','dislike'];
     
     public function tags(){
-    	return $this->belongsToMany('App\Model\user\Tag','post_tags','post_id','tag_id')->withTimestamps();//when it is created, it will be created with timestamp
+    	return $this->belongsToMany('App\Model\user\Tag','post_tags')->withTimestamps();//when it is created, it will be created with timestamp
     }
 
     public function categories(){
@@ -19,6 +20,11 @@ class Post extends Model
     public function getRouteKeyName()
     {
     	return 'slug';
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->diffForHumans();
     }
 
 }

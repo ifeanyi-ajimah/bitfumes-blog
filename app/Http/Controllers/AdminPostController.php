@@ -70,8 +70,16 @@ class AdminPostController extends Controller
         $post->body = $request->body;
         $post->status = (bool)$request->status;
         $post->save();
-        $post->tags()->sync($request->tags);
-        $post->categories()->sync($request->categories);
+        $tagoo = $request->tags;
+
+        $post->tags()->attach($tagoo);
+        $post->categories()->attach($request->categories);
+        
+        // foreach( $tagoo as $tago){
+        //     $post->tags()->attach($tago);
+        // }
+
+        //$post->categories()->sync(array($request->categories));
 
         return redirect(route('post.index'));
     }

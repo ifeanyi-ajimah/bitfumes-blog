@@ -4,7 +4,7 @@
   @include('/admin/layout/header')
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
-<div class="wrapper">
+<div class="wrapper" id="app">
 
   @include('admin/layout/navigation')
 

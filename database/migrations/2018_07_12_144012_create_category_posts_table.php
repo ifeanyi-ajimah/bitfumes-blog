@@ -15,8 +15,11 @@ class CreateCategoryPostsTable extends Migration
     {
         Schema::create('category_posts', function (Blueprint $table) {
             //we deleted the incrementation because this is just a relatinship table
-            $table->integer('post_id')->unsigned()->index();
+            $table->increments('id');
             $table->integer('category_id')->unsigned()->index();
+            $table->integer('post_id')->unsigned()->index();
+           
+            $table ->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table ->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->timestamps();
         });
