@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
 
-            <small>Created at: {{$post->created_at->diffForHumans()}}</small>
+            <small>Created at: {{$post->created_at}}</small>
             <small class="pull-right" > Categories: 
             @foreach($post->categories as $category)
 

@@ -11,4 +11,10 @@ class UserPostController extends Controller
     	//return $slug;
     	return view('user.post',compact('post'));
     }
+
+    public function saveLike(Request $request)
+    {
+        
+    }
+
 }

@@ -22,9 +22,9 @@
             
             {{-- <div class="post-preview" v-for="post in posts.data" :key="post.id"> when using post from laravel --}}
                 <div class="post-preview" v-for="post in posts" :key="post.id">
-
-                  <a :href="post.slug">
-                 {{-- <a  @click="show(post.slug)" href="#" >  --}}
+                  
+                  {{-- <a :href="post.slug"> --}}
+                 <a  @click="show(post.slug)" href="#" > 
                  
                   <h2 class="post-title" >
                     @{{ post.title}}

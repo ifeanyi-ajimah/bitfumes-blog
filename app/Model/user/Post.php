@@ -26,5 +26,16 @@ class Post extends Model
     {
         return Carbon::parse($value)->diffForHumans();
     }
+    
+    public function likes()
+    {
+        return $this->hasMany('App\Like','post_id');
+    }
+
+    public function getSlugAttribute($value)
+    {
+        return route('post',$value);
+    }
+
 
 }

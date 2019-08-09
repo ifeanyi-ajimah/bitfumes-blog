@@ -11,7 +11,7 @@ use App\Model\user\Category;
 class UserHomeController extends Controller
 {
     public function index (){
-    	$posts = Post::where('status',1)->orderBy('created_at','DESC')->paginate(5);
+    	$posts = Post::with('likes')->where('status',1)->orderBy('created_at','DESC')->paginate(10);
     	return view('user.blogs', compact('posts'));
     }
 
@@ -25,6 +25,12 @@ class UserHomeController extends Controller
     {
     	 $posts =  $category->posts();
     	 return view('user.blogs',compact('posts'));
+    }
+
+    public function getPosts(){
+        $posts = Post::with('likes')->where('status',1)->orderBy('created_at','DESC')->paginate(28);
+        return $posts->toJson();
+    	//return view('user.blogs', compact('posts'));
     }
 
     

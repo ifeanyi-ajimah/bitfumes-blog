@@ -1,11 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-*/
+
 
 /*
 |--------------------------------------------------------------------------
@@ -71,4 +66,12 @@ Route::get('/contact','ContactController@index');
 Route::post('/contactMailable','ContactController@sendWithMailable');
 Route::post('/contact','ContactController@sendContactMail');
 
+Route::post('/saveLike','LikeController@store');
 Route::get('/home', 'UserController@index')->name('home');
+Route::get('postlikeCont','LikeController@count');
+
+
+
+Route::get('retrievePosts','UserHomeController@getPosts');
+
+
